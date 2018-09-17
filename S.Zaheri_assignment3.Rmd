@@ -1,0 +1,79 @@
+---
+title: "Assignment3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=TRUE}
+# mkdir cd desktop assignment 3
+# C:\desktop\assignment 3
+
+```
+
+```{r, echo=TRUE}
+df <- read.csv("titanic.csv")
+S<-summary(df$Sex)
+x=c("male","female")
+y=c(577,314)
+plot(y, xlab="male is 1 and female is 2", ylab="frequency")
+
+mean(df$Age)
+mean(df$Survived)
+mean(df$Fare)
+```
+
+```{r, echo=TRUE}
+df2 <- read.csv("sleep_data_01.csv")
+df2<-na.omit(df2)
+Question2 <- function(x){
+ a1<-median(x$Age)
+ a2<-min(x$Duration)
+ a3<-max(x$Duration)
+ a4<-mean(x$RSES)
+ a5<-sd(x$RSES)
+ DataSum <- c(a1, a4/5, a5/5, a3-a2)
+ report <- data.frame(DataSum)
+ Colname <- c("MediamAge", "SelfSteem", "SE_SD", "DurationRange")
+ row.names(report) <- Colname
+ options(digits=3)
+}
+
+Question2(df2)
+  
+```
+
+```{r, echo=TRUE}
+library("fivethirtyeight", lib.loc="~/anaconda3/lib/R/library")
+df<- fivethirtyeight::comma_survey
+
+# https://github.com/rudeboybert/fivethirtyeight
+
+colnames(df)
+dim(df)
+
+```
+
+
+```{r, echo=TRUE}
+colnames(df)
+ncol(df)
+library("data.table", lib.loc="~/anaconda3/lib/R/library")
+Question5<- data.frame(uniqueN(df$respondent_id),uniqueN(df$gender),uniqueN(df$age),uniqueN(df$household_income),uniqueN(df$education),uniqueN(df$location),uniqueN(df$more_grammar_correct),uniqueN(df$heard_oxford_comma),uniqueN(df$care_oxford_comma),uniqueN(df$write_following),uniqueN(df$data_singular_plural),uniqueN(df$care_data),uniqueN(df$care_proper_grammar))
+
+par(las=2)
+library("reshape2", lib.loc="~/anaconda3/lib/R/library")
+
+barplot(melt(Question5)[,2], horiz = TRUE, xlab = "Freq", ylab = "major_categories")
+write.csv(df, file="fivethirtyeight.csv")
+
+```
+
+```{r, echo=TRUE}
+# Github link: https://github.com/sarazaheri121/Assignment3_szaheri.git
+print("https://github.com/sarazaheri121/Assignment3_szaheri.git")
+```
+
+
